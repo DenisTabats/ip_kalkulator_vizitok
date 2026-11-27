@@ -17,6 +17,7 @@ const qtyInput = document.querySelector("#qty");
 const paperSelect = document.querySelector("#paper");
 const colorSelect = document.querySelector("#color");
 const totalOutput = document.querySelector("#total");
+const previewImg = document.querySelector("#preview");
 
 const buildOptions = (select, items) => {
     select.innerHTML = items
@@ -39,6 +40,9 @@ const calculate = () => {
               + print.perSheet * sheets;
 
     totalOutput.textContent = sum.toLocaleString("ru-RU");
+
+    const fileName = print.name.replace("-", "_") + ".png";
+    previewImg.src = "assets/" + fileName;
 };
 
 [qtyInput, paperSelect, colorSelect].forEach(el => {
